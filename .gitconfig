@@ -1,0 +1,8 @@
+[user]
+	name = Jacob Chrzanowski
+	email = jlc3467@rit.edu
+[credential]
+	helper = /usr/local/bin/git-credential-manager
+	credentialStore = secretservice
+[credential "https://dev.azure.com"]
+	useHttpPath = true
