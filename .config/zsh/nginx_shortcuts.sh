@@ -42,7 +42,14 @@ function docker_clean {
     fi
 }
 function docker_clean2 {
-    docker container rm $(docker container ls -a | grep -i 'inacanoe-qa-web' | awk '{print $1}'); docker image rm inacanoe-qa-web;
+    if [ "$1" = "prod" ]; then
+        docker container rm $(docker container ls -a | grep -i 'inacanoe-prod-web'| awk '{print $1}'); docker image rm inacanoe-prod-web;
+    elif [ "$1" = "qa" ]; then
+        docker container rm $(docker container ls -a | grep -i 'inacanoe-qa-web'| awk '{print $1}'); docker image rm inacanoe-qa-web;
+    else
+        echo "Invalid environment. Please specify 'prod' or 'qa'."
+        return 1
+    fi
 }
 function docker_clean_old {
     docker container stop $(docker ps -a | grep "inacanoe-qa" | awk '{print $1}')

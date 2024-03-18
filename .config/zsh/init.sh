@@ -26,12 +26,14 @@ source $ZSH_C/aliases.sh
 source $ZSH_C/keybinds.sh
 source $ZSH_C/zsh_completion.sh
 source $ZSH_C/nginx_shortcuts.sh
+source $ZSH_C/scripts/env_mgmt.sh
 
 #run setup scripts
 source $ZSH_C/scripts/python_venv.sh
 # FZF Fuzzy Search Setup
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+print_term_envs
 # Python Virtual Environment
 #echo Entering python virtual env
 #source ~/.python_venv/bin/activate

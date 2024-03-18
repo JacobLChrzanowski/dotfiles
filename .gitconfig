@@ -3,6 +3,8 @@
 	email = jlc3467@rit.edu
 [credential]
 	helper = /usr/local/bin/git-credential-manager
-	credentialStore = secretservice
+	credentialStore = gpg
 [credential "https://dev.azure.com"]
 	useHttpPath = true
+[core]
+	editor = /usr/local/bin/nvim
