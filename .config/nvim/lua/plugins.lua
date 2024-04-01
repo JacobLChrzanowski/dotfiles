@@ -21,6 +21,7 @@ local disabled_rtp_plugins = {
 }
 -- nvimide.log(vim.fn.stdpath("data"))
 
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -34,12 +35,19 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- require("lazy").setup({})
+
+--
 require("lazy").setup({
     ----------------
     --  Required  --
     ----------------
     { "dstein64/vim-startuptime", cmd = "StartupTime" },
     { "farmergreg/vim-lastplace" },
+--    { "nvim-treesitter/nvim-treesitter" },
+--    { 'nvim-treesitter/nvim-treesitter-textobjects',
+--      commit = "73e44f43c70289c70195b5e7bc6a077ceffddda4"
+--    },
     { "rcarriga/nvim-notify",
       enabled = true;
       config = function()
@@ -78,3 +86,4 @@ require("lazy").setup({
       end,
     }
 })
+--

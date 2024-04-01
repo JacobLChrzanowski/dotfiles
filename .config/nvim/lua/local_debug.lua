@@ -25,13 +25,24 @@ nvimide = {
     end,
 }
 
--- Open log file if debugging is enabled
-if nvimide.debug then
-    nvimide.log_fh = io.open("/tmp/nvim." .. os.getenv("USER") .. "/nvimide.log", nvimide.debug_restart and 'w' or 'a')
+-- Create log directory if it doesn't exist
+local log_dir = "/tmp/nvim." .. os.getenv("USER")
+-- print(nvimide.debug)
+-- print(vim.fn.isdirectory(log_dir))
+if (nvimide.debug) then
+    if (vim.fn.isdirectory(log_dir) == 0) then
+        local success = vim.fn.mkdir(log_dir, "p")
+        if success == 0 then
+            print("Error: Unable to create log directory.")
+        end
+    end
+
+    -- Open log file if debugging is enabled
+    nvimide.log_fh = io.open(log_dir .. "/nvimide.log", nvimide.debug_restart and 'w' or 'a')
     if not nvimide.log_fh then
         print("Error: Unable to open log file.")
     end
 end
-
+--
 -- Log script entry
 nvimide.log("Enter " .. nvimide.script_path())

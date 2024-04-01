@@ -3,6 +3,9 @@ local o = vim.o
 local opt = vim.opt
 local fn = vim.fn
 
+g.loaded_ruby_provider = 0
+g.loaded_perl_provider = 0
+
 -- vim.g.FloatBorders = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" }
 vim.g.FloatBorders = "rounded"
 
@@ -32,6 +35,14 @@ vim.opt.wildmode = "list:longest"
 
 vim.opt.termguicolors = true
 
+--[[
+vim.g.clipboard = {
+    name = 'wl-clipboard',
+    copy = {}
+}
+--]]
+
+--[[
 vim.g.clipboard = {
     name = 'OSC 52',
     copy = {
@@ -43,3 +54,4 @@ vim.g.clipboard = {
         ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
     },
 }
+--]]

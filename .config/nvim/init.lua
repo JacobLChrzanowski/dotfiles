@@ -8,7 +8,7 @@ require("options")
 -- load plugins
 require ("plugins")
 -- Notify
-vim.notify = require("notify")
+--vim.notify = require("notify")
 -- require("notify")("My super important message")
 -- load macros
 require ("macros")

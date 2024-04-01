@@ -1,7 +1,11 @@
 #
-
-export PATH=$PATH:/home/jacobc/.local/bin
+# What is this for?
+path+=("/home/$USER/.local/bin")
+# Provides path for zellij
+path+=("/home/$USER/.cargo/bin/")
 #export PATH="/opt/nvim-linux64/bin:$PATH"
+# Provides path for ruby gems
+path+=("/home/$USER/bin")
 
 HISTFILE=~/.history
 HISTSIZE=25000
@@ -31,7 +35,7 @@ source $ZSH_C/scripts/env_mgmt.sh
 #run setup scripts
 source $ZSH_C/scripts/python_venv.sh
 # FZF Fuzzy Search Setup
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source $ZSH_C/scripts/fzf.sh
 
 print_term_envs
 # Python Virtual Environment
