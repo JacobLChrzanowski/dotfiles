@@ -12,6 +12,7 @@ alias vim='nvim'
 # git setup for maintaining dotfiles
 # https://www.atlassian.com/git/tutorials/dotfiles
 config() { git --git-dir=$HOME/.cfg/ --work-tree=$HOME "$@" }
+configls() { config ls-files --exclude-standard --others --directory "$@" }
 
 # Leave at the bottom
 # https://askubuntu.com/questions/22037/aliases-not-available-when-using-sudo
