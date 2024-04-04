@@ -35,7 +35,7 @@ source $ZSH_C/scripts/env_mgmt.sh
 #run setup scripts
 source $ZSH_C/scripts/python_venv.sh
 # FZF Fuzzy Search Setup
-source $ZSH_C/scripts/fzf.sh
+source $ZSH_C/fzf_bindings.zsh
 
 print_term_envs
 # Python Virtual Environment

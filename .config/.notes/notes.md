@@ -11,6 +11,7 @@ mkdir ~/.cfg
 echo ".cfg" >> ~/.gitignore
 config() { git --git-dir=$HOME/.cfg/ --work-tree=$HOME "$@" }
 git clone --bare https://github.com/JacobLChrzanowski/dotfiles.git $HOME/.cfg
+config config --local status.showUntrackedFiles no
 config checkout --force
 ```
 
