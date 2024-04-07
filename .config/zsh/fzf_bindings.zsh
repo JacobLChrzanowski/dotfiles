@@ -1,18 +1,27 @@
 # Configures FZF bindings and sources spare file if unavailable in the ssytem
 
 fzf_share='/usr/share/fzf'
-completion="${fzf_share}/completion.zsh"
-key_bindings="${fzf_share}/key-bindings.zsh"
+fzf_fallback_share='~/.config/zsh/scripts/fzf_'
+completion='completion.zsh'
+key_bindings='key-bindings.zsh'
 
-if [ -f $completion ]; then
-    source $completion;
+p_completion="${fzf_share}/$completion"
+p_key_bindings="${fzf_share}/$key_bindings"
+
+f_completion="${fzf_fallback_share}/${completion}"
+f_key_bindings="${fzf_fallback_share}/${key_bindings}"
+
+if [ -f $p_completion ]; then
+    source $p_completion;
 else
-    echo "FZF Completion file is missing: $completion";
+    echo "FZF Completion file is missing: '$completion' using included fallback instead.";
+    source $f_completion
 fi;
 
-if [ -f $key_bindings ]; then
-    source $key_bindings
+if [ -f $p_key_bindings ]; then
+    source $p_key_bindings
 else
-    echo "FZF Key Bindings file is missing?: '${key_binding}'";
+    echo "FZF Key Bindings file is missing: '${key_binding}' using included fallback instead.";
+    source $f_key_bindings
 fi;
 
