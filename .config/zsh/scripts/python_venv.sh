@@ -6,7 +6,7 @@ elif [[ $(which python) ]]; then
     python=$(which python);
 else
     echo 'Python is not installed';
-    exit 1
+    return 1;
 fi
 #Python Virtual Environment setup
 venv_path="$HOME/.python_venv"
@@ -19,7 +19,7 @@ else
         echo "Python virtual environment created successfully in $venv_path";
     else
         echo "Python virtual environment could not be created in $venv_path";
-        exit 1;
+        return 1;
     fi
 fi
 echo "Entering python virtual env in $venv_path"

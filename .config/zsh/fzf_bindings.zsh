@@ -1,7 +1,7 @@
 # Configures FZF bindings and sources spare file if unavailable in the ssytem
 if [[ ! $(which fzf) ]]; then
     echo "fzf not present"
-    exit 1
+    return 1
 fi
 fzf_share='/usr/share/fzf'
 fzf_fallback_share='$HOME/.config/zsh/scripts/fzf'
