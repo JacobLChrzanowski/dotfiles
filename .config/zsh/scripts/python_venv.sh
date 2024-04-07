@@ -1,5 +1,13 @@
 #!/bin/bash
 
+if [[ $(which python3) ]]; then
+    :
+elif [[ $(which python) ]]; then
+    :
+else
+    echo 'Python is not installed';
+    exit 1
+fi
 #Python Virtual Environment setup
 venv_path="$HOME/.python_venv"
 
