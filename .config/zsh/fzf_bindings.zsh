@@ -1,7 +1,7 @@
 # Configures FZF bindings and sources spare file if unavailable in the ssytem
 
 fzf_share='/usr/share/fzf'
-fzf_fallback_share='~/.config/zsh/scripts/fzf_'
+fzf_fallback_share='~/.config/zsh/scripts/fzf'
 completion='completion.zsh'
 key_bindings='key-bindings.zsh'
 
