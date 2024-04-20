@@ -11,6 +11,7 @@ alias vim='nvim'
 
 # git setup for maintaining dotfiles
 # https://www.atlassian.com/git/tutorials/dotfiles
+# Pull in latest branch -$ config pull origin <branchname>
 config() { git --git-dir=$HOME/.cfg/ --work-tree=$HOME "$@" }
 configls() { config ls-files --exclude-standard --others --directory "$@" }
 

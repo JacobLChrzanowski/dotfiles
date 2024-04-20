@@ -1,3 +1,12 @@
+# Notes
+
+## Break-Fix
+
+### Gnome freezes
+https://wiki.archlinux.org/title/GNOME/Troubleshooting
+`pkill -HUP gnome-shell`
+
+
 ```
 sudo dnf install zsh git gpg pass
 ```
