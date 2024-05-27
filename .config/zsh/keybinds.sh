@@ -8,7 +8,7 @@
 bindkey -e
 
 if [ -z ${TERM_PROGRAM} ]; then
-    echo No TERM_RPOGRAM var set
+    echo No TERM_PROGRAM var set
     bindkey "^[[D" backward-char
     bindkey "^[[1;5D" backward-word
     bindkey "^[[C" forward-char
