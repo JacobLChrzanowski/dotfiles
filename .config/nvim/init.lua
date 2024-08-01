@@ -1,6 +1,6 @@
 -- NeoVim Initialization
 vim.g.mapleader = " "
-
+math.randomseed(os.time())
 -- Debug
 require("local_debug")
 -- general configurations
@@ -8,8 +8,9 @@ require("options")
 -- load plugins
 require ("plugins")
 -- Notify
---vim.notify = require("notify")
--- require("notify")("My super important message")
+vim.notify = require("notify")
+local myNames = {'Julie', 'Fenyc', 'F.Fur', 'Puppy', 'Pet', 'Cutie'}
+require("notify")(string.format("Welcome home %s!",myNames[math.random(1, #myNames)]))
 -- load macros
 require ("macros")
 
