@@ -3,7 +3,7 @@
 alias editz='vim ~/.zshrc'
 alias loadz='source ~/.zshrc'
 alias grep='grep --color'
-alias ls='ls --color=auto'
+alias ls='ls --color=auto --group-directories-first'
 alias oldvim="command vim"
 alias vim='nvim'
 #alias python3='python3.10'

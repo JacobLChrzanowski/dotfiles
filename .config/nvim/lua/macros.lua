@@ -8,11 +8,14 @@ vim.opt.listchars = {
 }
 
 -- Map Ctrl-y to copy to system clipboard in visual mode
-vim.api.nvim_set_keymap('x', '<C-y>', '"+y', { noremap = true })
+vim.keymap.set('x', '<C-y>', '"+y', { noremap = true })
+
+-- Map Alt-Backspace to Backward Kill Word
+vim.keymap.set('i', '<A-BS>', '<C-w>', { noremap = true })
 
 -- Map Ctrl-Backspace to delete previous word
 -- vim.api.nvim_set_keymap('', '<C-?>', '<C-W>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('i', '<C-BS>', '<C-w>', { noremap = true, silent = true })
+vim.keymap.set('i', '<C-BS>', '<C-w>', { noremap = true, silent = true })
 
 -- Something else to do with expanding tabbing
 function toggle_expandtab()
@@ -27,7 +30,7 @@ function toggle_expandtab()
 end
 
 vim.bo.expandtab = true
-vim.api.nvim_set_keymap('i', '<F6>', '<C-o>:lua toggle_expandtab()<CR>', { noremap = true, silent = false })
+vim.keymap.set('i', '<F6>', '<C-o>:lua toggle_expandtab()<CR>', { noremap = true, silent = false })
 
 -- Show diff from original file
 function show_diff()
@@ -46,7 +49,12 @@ vim.opt.listchars = {
     space = "_",
 }
 -- Toggle list mode with F5 key
-vim.api.nvim_set_keymap('n', '<F5>', ':set list!<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('i', '<F5>', '<C-o>:set list!<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('c', '<F5>', '<C-c>:set list!<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<F5>', ':set list!<CR>', { noremap = true, silent = true })
+vim.keymap.set('i', '<F5>', '<C-o>:set list!<CR>', { noremap = true, silent = true })
+vim.keymap.set('c', '<F5>', '<C-c>:set list!<CR>', { noremap = true, silent = true })
+
+-- Toggle Comments
+vim.keymap.set('n', '<C-_>', ':CommentToggle<CR>', { noremap = true, silent = true})
+vim.keymap.set('v', '<C-_>', ':\'<,\'>CommentToggle<CR>', { noremap = true, silent = true})
+
 

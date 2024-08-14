@@ -2,7 +2,7 @@ local disabled_rtp_plugins = {
     -- "netrw",
     -- "netrwPlugin",
     -- "netrwSettings",
-    -- "netrwFileHandlers",
+    -- "net:rwFileHandlers",
     "gzip",
     "tutor",
     "zip",
@@ -35,9 +35,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- require("lazy").setup({})
-
---
 require("lazy").setup({
     ----------------
     --  Required  --
@@ -53,6 +50,27 @@ require("lazy").setup({
       config = function()
         require('notify').setup({render = 'compact'})
       end,
+    },
+    { "lukas-reineke/indent-blankline.nvim",
+      main = "ibl", opts = {};
+      config = function()
+      require("ibl").setup({
+        --require("plugin_config.indent_blankline_conf")
+        --indent = { highlight = highlight }
+      })
+      end
+    },
+    { "terrortylor/nvim-comment",
+      config = function()
+        require("nvim_comment").setup()
+      end
+    },
+    { "vhyrro/luarocks.nvim",
+      priority = 1000,
+      config = true,
+      opts = {
+        rocks = { "fzy" },
+      },
     },
     { "rebelot/kanagawa.nvim",
       enabled = true;
