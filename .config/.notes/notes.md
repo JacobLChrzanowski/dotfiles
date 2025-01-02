@@ -45,7 +45,9 @@ git config --global credential.credentialStore=gpg
 # https://github.com/git-ecosystem/git-credential-manager/blob/release/docs/credstores.md
 
 ##
-openssh-server rustup(??) cargo 
+- openssh-server
+- rustup (cargo)
+    - zoxide
 
 
 # --
