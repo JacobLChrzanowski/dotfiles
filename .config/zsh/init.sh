@@ -27,11 +27,11 @@ EDITOR=/usr/local/bin/nvim
 
 PROMPT='%B%F{37}%n%b%F{154}@%F{214}%m%f:%~$ '
 ZSH_C=~/.config/zsh
+source $ZSH_C/zsh_completion.sh # contains compinit 
+source $ZSH_C/scripts/env_mgmt.sh
 source $ZSH_C/aliases.sh
 source $ZSH_C/keybinds.sh
-source $ZSH_C/zsh_completion.sh
 source $ZSH_C/nginx_shortcuts.sh
-source $ZSH_C/scripts/env_mgmt.sh
 
 #run setup scripts
 source $ZSH_C/scripts/python_venv.sh

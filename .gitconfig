@@ -1,0 +1,11 @@
+[user]
+    name = Jacob Chrzanowski
+    email = jlc3467@rit.edu
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[core]
+	editor = nvim

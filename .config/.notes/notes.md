@@ -1,3 +1,12 @@
+# Notes
+
+## Break-Fix
+
+### Gnome freezes
+https://wiki.archlinux.org/title/GNOME/Troubleshooting
+`pkill -HUP gnome-shell`
+
+
 ```
 sudo dnf install zsh git gpg pass
 ```
@@ -36,7 +45,10 @@ git config --global credential.credentialStore=gpg
 # https://github.com/git-ecosystem/git-credential-manager/blob/release/docs/credstores.md
 
 ##
-openssh-server rustup(??) cargo 
+- openssh-server
+- rustup (cargo)
+    - zoxide
+- npm (for nvim lua/language server plugins)
 
 
 # --
