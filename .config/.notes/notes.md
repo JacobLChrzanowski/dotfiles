@@ -48,6 +48,7 @@ git config --global credential.credentialStore=gpg
 - openssh-server
 - rustup (cargo)
     - zoxide
+- npm (for nvim lua/language server plugins)
 
 
 # --
