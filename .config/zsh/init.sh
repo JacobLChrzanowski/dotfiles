@@ -12,6 +12,7 @@ HISTSIZE=25000
 SAVEHIST=25000
 setopt EXTENDED_HISTORY
 setopt INC_APPEND_HISTORY
+setopt HIST_IGNORE_SPACE
 export WORDCHARS='*?_.[]~&;!#$%^(){}<>'
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 export GCM_CREDENTIAL_STORE=gpg
@@ -37,7 +38,7 @@ source $ZSH_C/scripts/python_venv.sh
 # FZF Fuzzy Search Setup
 source $ZSH_C/fzf_bindings.zsh
 
-print_term_envs
+#print_term_envs
 # Python Virtual Environment
 #echo Entering python virtual env
 #source ~/.python_venv/bin/activate
