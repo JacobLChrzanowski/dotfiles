@@ -9,6 +9,14 @@ alias vim='nvim'
 #alias python3='python3.10'
 #alias pip3='pip3.10'
 
+# Replace cd with zoxide, which lets you cd 
+# into partial directory names and it guesses
+# where you really want to go.
+if check_command "zoxide"; then
+    eval "$(zoxide init zsh)";
+    alias cd='z';
+fi;
+
 # git setup for maintaining dotfiles
 # https://www.atlassian.com/git/tutorials/dotfiles
 # Pull in latest branch -$ config pull origin <branchname>
