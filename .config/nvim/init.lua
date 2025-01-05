@@ -9,13 +9,11 @@ require("options")
 require ("plugins")
 -- Notify
 vim.notify = require("notify")
--- local myNames = {'Julie', 'Fenyc', 'F.Fur', 'Puppy', 'Pet', 'Cutie'}
 -- load macros
 require ("macros")
 
 -- Greeter ('hello, <name>!')
 require("greeter")
--- require("notify")(string.format("Welcome home %s!",myNames[math.random(1, #myNames)]))
 
 -- commands
 -- vim.cmd("source ~/.config/nvim/viml/commands.vim")
