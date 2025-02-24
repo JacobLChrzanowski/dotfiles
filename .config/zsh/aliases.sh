@@ -6,6 +6,7 @@ alias grep='grep --color'
 alias ls='ls --color=auto --group-directories-first'
 alias oldvim="command vim"
 alias vim='nvim'
+alias clip='xclip -selection clipboard'
 #alias python3='python3.10'
 #alias pip3='pip3.10'
 
@@ -22,6 +23,8 @@ fi;
 # Pull in latest branch -$ config pull origin <branchname>
 config() { git --git-dir=$HOME/.cfg/ --work-tree=$HOME "$@" }
 configls() { config ls-files --exclude-standard --others --directory "$@" }
+# Search through zsh configuration
+search() { grep "$@" -r ~/.config/zsh }
 
 # Leave at the bottom
 # https://askubuntu.com/questions/22037/aliases-not-available-when-using-sudo
