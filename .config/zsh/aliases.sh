@@ -23,8 +23,9 @@ fi;
 # Pull in latest branch -$ config pull origin <branchname>
 config() { git --git-dir=$HOME/.cfg/ --work-tree=$HOME "$@" }
 configls() { config ls-files --exclude-standard --others --directory "$@" }
-# Search through zsh configuration
-search() { grep "$@" -r ~/.config/zsh }
+
+# Lock X Session
+alias lock='i3lock -efkp win -i /home/jacobc/Downloads/windows-xp-bliss-4k-lu-2560x1600.png'
 
 # Leave at the bottom
 # https://askubuntu.com/questions/22037/aliases-not-available-when-using-sudo

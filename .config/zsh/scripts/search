@@ -1,0 +1,18 @@
+#!/bin/bash
+# Search through zsh configuration
+
+function main() {
+    # Exit on error
+    set -e
+    if [[ $# -eq 0 ]]; then
+        echo "No search terms were provided."
+        exit 1
+    fi
+
+    grep --color=auto "$@" -r $ZSH_C
+}
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    main "$@"
+    exit $?
+fi
