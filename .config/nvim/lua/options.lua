@@ -10,29 +10,27 @@ g.loaded_perl_provider = 0
 vim.g.FloatBorders = "rounded"
 
 opt.clipboard:append("unnamedplus")
--- Set tab size to 4 spaces
+-- Tabstops and Indentation
 opt.tabstop = 4
--- Set indentation width to 4 spaces
 opt.shiftwidth = 4
--- Use spaces for indentation
-opt.expandtab = true
--- Enable auto-indentation
 opt.autoindent = true
--- Enable smart indentation
 opt.smartindent = true
--- Disable compatibility with vi
+---- Use spaces for indentation
+opt.expandtab = true
+---- Disable compatibility with vi
 opt.compatible = false
 
--- Enable line numbers
+-- UI Changes
+----Line numbers
 vim.opt.number = true
--- Show the mode in the status line
+---- Show the mode in the status line
 vim.opt.showmode = true
--- Highlight matching parenthesis
+---- Highlight matching parenthesis
 vim.opt.showmatch = true
--- Enable auto-completion menu after pressing TAB
+---- Enable auto-completion menu after pressing TAB
 vim.opt.wildmenu = true
 vim.opt.wildmode = "list:longest"
-
+---- 24-bit RGB color
 vim.opt.termguicolors = true
 
 --[[

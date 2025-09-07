@@ -1,0 +1,24 @@
+# <%= @config['name'] %> Theme
+# Description: <%= @config['description'] %>
+# Generated from: <%= @config['_source_file'] || 'theme configuration' %>
+
+# Theme & Style
+set -g status-bg "<%= @config['colors']['status_bg'] %>" # <%= @config['name'] %>
+## Bottom Bar
+### Left
+set -g status-left "<%= @status_left %>"
+set -g status-left-length "<%= @status_left.length %>"
+### Active Window
+set -g window-status-current-format "<%= build_active_window %>"
+### Inactive Window  
+set -g window-status-format "<%= build_inactive_window %>"
+### Right
+set-option -g status-right "<%= @status_right || '%a %Y.%m.%d %I:%M:%S' %>"
+## Pane Border
+set -g pane-active-border-style "#{?pane_in_mode,fg=yellow,#{?synchronize-panes,fg=red,fg=<%= @config['colors']['pane_border'] %>}}"
+<% if @config['additional_settings'] %>
+# Additional Settings
+<% @config['additional_settings'].each do |setting| %>
+<%= setting %>
+<% end %>
+<% end %>

@@ -1,0 +1,35 @@
+---
+name: Cyberpunk
+description: Like Ultraviolet but different symbols
+colors:
+  status_bg: "#655a7c"
+  session_fg: "#ffffff"
+  session_bg: "#1d1a24"
+  gradient:
+  - "#1d1a24"
+  - "#292532"
+  - "#352f41"
+  - "#413a50"
+  - "#4d455e"
+  - "#594f6d"
+  - "#655a7c"
+  active_window_bg: "#ab92bf"
+  active_window_fg: black
+  inactive_window_bg: "#4d455e"
+  inactive_window_fg: "#cccccc"
+  status_right:
+    date_fg: "#ffd8be"
+    date_bg: "#8c5b6c"
+    time_fg: "#ffd8be"
+    time_bg: "#b25c5c"
+  pane_border: "#b25c5c"
+symbols:
+  separator_left: "▶"
+  separator_middle: "▶"
+  separator_right: "◀"
+  session_prefix: "〈"
+  session_suffix: "〉"
+format:
+  status_right:
+    date: " %a %Y.%m.%d "
+    time: " %I:%M:%S "

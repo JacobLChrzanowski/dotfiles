@@ -1,15 +1,31 @@
-# Holds zsh completion settings
+#
 
+autoload -Uz promptinit
+promptinit
 # Use modern completion system
 autoload -Uz compinit && compinit
 autoload -U colors && colors
+
+# On Darwin, dircolors requires installing GNU Coreutils
+# Provides LS_COLORS
+if command -v dircolors > /dev/null 2>&1; then
+    eval "$(dircolors -b)";
+else
+    echo 'dircolors is missing, coreutils may not be installed';
+fi
+
+# LS Colors on Mac / Darwin
+if [[ ${UNAME} == 'Darwin' ]]; then
+    # .bak is too dark, make it lighter
+    export LS_COLORS="$(echo "$LS_COLORS" | sed 's/\*\.bak=[^:]*/*\.bak=38;5;247/')"
+fi
 
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' format 'Completing %d'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' menu select=2
-eval "$(dircolors -b)"
+
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
@@ -21,4 +37,3 @@ zstyle ':completion:*' verbose true
 
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
-

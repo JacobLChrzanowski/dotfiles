@@ -7,7 +7,30 @@
 # Use emacs keybindings even if our EDITOR is set to vi
 bindkey -e
 
-if [ -z ${TERM_PROGRAM} ]; then
+
+if [[ $UNAME == 'Darwin' ]]; then
+    # Darwin
+    # Shift
+    bindkey "^[[1;2D"   backward-word
+    bindkey "^[[1;2C"   forward-word
+    # Fn
+    ## Arrow Left/Right
+    ### Kitten->Tmux
+    bindkey "^[[1~"     beginning-of-line
+    bindkey "^[[4~"     end-of-line
+    ### Kitten
+    bindkey "^[[H"      beginning-of-line
+    bindkey "^[[F"      end-of-line
+    ## Backspace -> Delete
+    bindkey "^[[3~"     delete-char
+    # # Command
+    # bindkey "^[[1;3D"   beginning-of-line
+    # bindkey "^[[1;3C"   end-of-line
+    # # Option
+    # bindkey "^[[1;3D"   backward-word
+    # bindkey "^[[1;3C"   forward-word
+    ;
+elif [ -z ${TERM_PROGRAM} ]; then
     echo No TERM_PROGRAM var set
     bindkey "^[[D" backward-char
     bindkey "^[[1;5D" backward-word
