@@ -1,0 +1,44 @@
+#!/bin/bash
+# dotmgr
+# Manages symlinks and their installation/removal for dotfiles.
+# 
+# # Intro
+# By default, dotmgr will use its parent directory as a source and the user's
+#   $HOME as a destination. Override these with DOTMGR_SRC & DOTMGR_DST.
+# # Control Files
+# Certain specially-named files dictate how files and folders are symlinked, they are called 'control files' (CFs). All control files can contain newline-separated entries that indicate files to exclude. Exclusions affect files and folders adjacent to the CF. For instance a .files with the contents '.git\n.gitignore' indicates to the script that, when creating dotfiles for all files in that directory, it should avoid creating symlinks for .git and .gitignore. This is helpful for obvious reasons but also allows you to symlink subfolders of ~/.config so that you don't need to keep all your config files in a github repo. For instance, if you don't care about vim preferences and you daily neovim.
+# - '.dir'   marks the parent directory.
+# - '.dirs'  marks adjacent directories.
+# - '.files' marks adjacent files. 
+# # Env Vars
+# You can modify default behavior with environment variables. All modifyable vars use the 'DOTMGR_' prefix.
+# - DOTMGR_SRC: root of directory where symlinks will point to (this defines the structure of symlinks that will be made.
+# - DOTMGR_DST: directory where symlinks will be created.
+
+# Exit on error
+set -e
+
+SCRIPT_DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
+SRC_DIR=$(readlink -f ${DOTMGR_SRC:-$SCRIPT_DIR})
+DST_DIR=$(readlink -f ${DOTMGR_DST:-$HOME})
+
+function main() {
+    # if [[ $# -eq 0 ]]; then
+    #     echo "No search terms were provided."
+    #     exit 1
+    # fi
+    local t_files
+    local t_dirs
+    t_files="."
+    t_files="${t_files}:a/new/dir"
+    t_files="${t_files}:b/fsh/pls"
+
+    
+    
+
+}
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    main "$@"
+    exit $?
+fi
