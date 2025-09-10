@@ -43,3 +43,13 @@
 # resize-overlay-duration = 4s 200ms
 
 mouse-scroll-multiplier=1
+
+font-family = "CaskaydiaCove Nerd Font Mono"
+# font-family = "JetBrains Mono NL Light"
+font-family = "FenycFontPatch"
+
+font-family = "Symbols Nerd Font Mono"
+font-family = "Noto Color Emoji"
+
+
+
