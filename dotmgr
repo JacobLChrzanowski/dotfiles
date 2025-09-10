@@ -21,19 +21,47 @@ set -e
 SCRIPT_DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 SRC_DIR=$(readlink -f ${DOTMGR_SRC:-$SCRIPT_DIR})
 DST_DIR=$(readlink -f ${DOTMGR_DST:-$HOME})
+# Self Config Dir
+SC_DIR="${DST_DIR}/.config/ff_dotmgr"
+SC_MODS_LIST="${SC_DIR}/changes.txt"
 
 function main() {
     # if [[ $# -eq 0 ]]; then
     #     echo "No search terms were provided."
     #     exit 1
     # fi
-    local t_files
+    local t_dir
     local t_dirs
-    t_files="."
-    t_files="${t_files}:a/new/dir"
-    t_files="${t_files}:b/fsh/pls"
+    local t_files
+    echo "SCRIPT_DIR:   ${SCRIPT_DIR}"
+    echo "SRC_DIR:      ${SRC_DIR}"
+    echo "DST_DIR:      ${DST_DIR}"
+    echo "SC_DIR:       ${SC_DIR}"
+    echo "SC_MODS_LIST: ${SC_MODS_LIST}"
 
-    
+    readarray -d '' t_dir < \
+        <(find "${SRC_DIR}" -type f -name '.dir' -print0)
+    readarray -d '' t_file < \
+        <(find "${SRC_DIR}" -type f -name '.dirs' -print0)
+    readarray -d '' t_files < \
+        <(find "${SRC_DIR}" -type f -name '.files' -print0)
+
+    # echo $t_dir
+    # echo $t_dirs
+    # echo $t_files
+
+    for src_path in "${t_dir[@]}"; do
+        tmp_path=`echo ${src_path} \
+            | awk -F"${SRC_DIR}/" '{print $2}' \
+            | awk -F'/.dir' '{print $1}'`
+        dst_path="${DST_DIR}/${tmp_path}"
+        echo $path
+        echo $src_path
+        echo $dst_path
+        if [ -d ${dst_path} ]; then
+            echo "  this path exists"
+        fi
+    done
     
 
 }
