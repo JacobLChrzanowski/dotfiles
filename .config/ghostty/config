@@ -51,5 +51,6 @@ font-family = "FenycFontPatch"
 font-family = "Symbols Nerd Font Mono"
 font-family = "Noto Color Emoji"
 
-
+background-opacity = 0.75
+background-blur = 1
 
