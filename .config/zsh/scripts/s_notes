@@ -1,0 +1,36 @@
+#!/bin/bash
+# Search through zsh configuration
+
+function fzf_preview() {
+    echo "$1 $FZF_PREVIEW_TOP"
+}
+#
+# export -f fzf_preview
+
+function fzf_search() {
+    fzf --cycle \
+        --preview 'bash -c "fzf_preview {}"' \
+        --preview-label 'Contents'
+}
+
+function main() {
+    # Exit on error
+    set -e
+    if [[ $# -eq 0 ]]; then
+        echo "No search terms were provided."
+        exit 1
+    fi
+    search_dir=`realpath ~/Documents/obsidian_notes`;
+
+    # grep --color=auto "$@" -ri $search_dir;
+    # find "${search_dir}" -iname "*${@}*";
+    while [[ true ]]
+    do
+        find "${search_dir}" -type f | fzf_search
+    done
+}
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    main "$@"
+    exit $?
+fi

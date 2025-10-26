@@ -1,0 +1,74 @@
+#!/bin/bash
+
+# -------------------------------------------------------
+# Script Name: script_name.sh
+# Description: Brief description of what this script does
+# Author: Your Name
+# Date Created: YYYY-MM-DD
+# Usage: ./script_name.sh [arguments]
+# -------------------------------------------------------
+
+function cleanup() {
+    # Add cleanup commands here
+}
+
+function show_help() {
+    echo "Usage: $0 [options] argument"
+    echo "Options:"
+    echo "  -h, --help     Display this help message"
+    echo "  -a, --arg      Arg1"
+}
+
+# Main function that contains the primary script logic
+function main() {
+    # Exit on error
+    set -e
+    
+    # Parse command line arguments
+    local ARG1=""
+
+    while [[ $# -gt 0 ]]; do
+        case "$1" in
+            -h|--help)
+                show_help
+                return 0
+                ;;
+            -a|--arg)
+                ARG1="$2"
+                shift 2
+                ;;
+            *)
+                # Unknown option
+                echo "Error: Unknown option $1"
+                show_help
+                return 1
+                ;;
+        esac
+    done
+
+    # Set up trap to call cleanup function on exit
+    trap cleanup EXIT
+
+    # Check if required tools are installed
+    if ! command -v some_command &> /dev/null; then
+        log_message "Error: Required command 'some_command' not found"
+        return 1
+    fi
+
+    echo $ARG1
+
+    return 0
+}
+
+# Check if the script is being executed directly (not sourced/imported)
+# ${BASH_SOURCE[0]} is the name of the script being executed
+# $0 is the name of the shell or shell script being executed
+# If they're the same, then the script is being run directly
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    main "$@"
+    exit $?
+fi
+
+# If sourced (not run directly), the following will be executed:
+# export any functions or variables you want to make available when sourced
+export -f cleanup

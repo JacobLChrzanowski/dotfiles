@@ -9,6 +9,10 @@ path+=("/home/$USER/.cargo/bin/")
 path+=("/home/$USER/bin")
 path+=("${ZSH_C}/scripts")
 
+# Zsh's autoloading function path
+# https://unix.stackexchange.com/questions/33255/how-to-define-and-load-your-own-shell-function-in-zsh
+fpath+=("${ZSH_C}/zfunc" "${fpath[@]}")
+
 HISTFILE=~/.history
 HISTSIZE=25000
 SAVEHIST=25000
@@ -19,16 +23,13 @@ export WORDCHARS='*?_.[]~&;!#$%^(){}<>'
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 export GCM_CREDENTIAL_STORE=gpg
 
-autoload -Uz promptinit
-promptinit
-#prompt adam1
 setopt histignorealldups sharehistory
 
 #EDITOR=/opt/nvim-linux64/bin/nvim
 EDITOR=/usr/local/bin/nvim
-
-PROMPT='%B%F{37}%n%b%F{154}@%F{214}%m%f:%~$ '
-source $ZSH_C/zsh_completion.sh # contains compinit 
+source $ZSH_C/zsh_init.zsh # contains compinit, promptinit
+source $ZSH_C/zsh_completion.sh
+source $ZSH_C/prompt.zsh
 source $ZSH_C/scripts/env_mgmt.sh
 source $ZSH_C/aliases.sh
 source $ZSH_C/keybinds.sh

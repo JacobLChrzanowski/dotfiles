@@ -117,9 +117,22 @@ require("lazy").setup({
       mason_lspconfig.setup {
         ensure_installed = { "pyright" }
       }
-      require("lspconfig").pyright.setup {
+
+      -- New API using vim.lsp.config instead of require("lspconfig")
+      vim.lsp.config.pyright = {
+        cmd = { "pyright-langserver", "--stdio" },
+        filetypes = { "python" },
+        root_markers = { "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", "Pipfile", ".git" },
         capabilities = capabilities,
       }
+
+      -- Enable the LSP for Python files
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "python",
+        callback = function()
+          vim.lsp.enable("pyright")
+        end,
+      })
     end
   },
   { "hrsh7th/nvim-cmp",
