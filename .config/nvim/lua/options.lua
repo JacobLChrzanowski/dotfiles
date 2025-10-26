@@ -35,6 +35,10 @@ vim.opt.wildmode = "list:longest"
 
 vim.opt.termguicolors = true
 
+-- Mouse
+-- -- Scroll Speed
+opt.mousescroll = "ver:1,hor:1"
+
 --[[
 vim.g.clipboard = {
     name = 'wl-clipboard',
