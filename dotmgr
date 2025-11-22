@@ -46,7 +46,7 @@ function main() {
     readarray -d '' t_files < \
         <(find "${SRC_DIR}" -type f -name '.files' -print0)
 
-    # echo $t_dir
+    # echo $t_dir # test sync
     # echo $t_dirs
     # echo $t_files
 
