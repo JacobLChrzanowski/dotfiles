@@ -1,0 +1,3 @@
+# https://unix.stackexchange.com/questions/33255/how-to-define-and-load-your-own-shell-function-in-zsh
+prompt_themes+=( fenyc )
+prompt fenyc

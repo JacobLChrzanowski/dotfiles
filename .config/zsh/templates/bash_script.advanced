@@ -1,0 +1,118 @@
+#!/bin/bash
+
+# -------------------------------------------------------
+# Script Name: script_name.sh
+# Description: Brief description of what this script does
+# Author: Your Name
+# Date Created: YYYY-MM-DD
+# Usage: ./script_name.sh [arguments]
+# -------------------------------------------------------
+
+# Define variables
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+LOG_FILE="${SCRIPT_DIR}/script.log"
+
+# Define functions
+function log_message() {
+    local message="$1"
+    local timestamp=$(date "+%Y-%m-%d %H:%M:%S")
+    echo "[${timestamp}] ${message}" | tee -a "$LOG_FILE"
+}
+
+function cleanup() {
+    log_message "Cleaning up resources..."
+    # Add cleanup commands here
+}
+
+function show_help() {
+    echo "Usage: $0 [options] argument"
+    echo "Options:"
+    echo "  -h, --help     Display this help message"
+    echo "  -v, --verbose  Enable verbose output"
+    echo "  -f, --file     Specify an input file"
+}
+
+# Main function that contains the primary script logic
+function main() {
+    # Exit on error
+    set -e
+    
+    # Parse command line arguments
+    local VERBOSE=false
+    local INPUT_FILE=""
+
+    while [[ $# -gt 0 ]]; do
+        case "$1" in
+            -h|--help)
+                show_help
+                return 0
+                ;;
+            -v|--verbose)
+                VERBOSE=true
+                shift
+                ;;
+            -f|--file)
+                INPUT_FILE="$2"
+                shift 2
+                ;;
+            *)
+                # Unknown option
+                echo "Error: Unknown option $1"
+                show_help
+                return 1
+                ;;
+        esac
+    done
+
+    # Set up trap to call cleanup function on exit
+    trap cleanup EXIT
+
+    # Main script logic
+    log_message "Starting script execution"
+
+    # Check if required tools are installed
+    if ! command -v some_command &> /dev/null; then
+        log_message "Error: Required command 'some_command' not found"
+        return 1
+    fi
+
+    # Check if input file exists (if specified)
+    if [[ -n "$INPUT_FILE" && ! -f "$INPUT_FILE" ]]; then
+        log_message "Error: Input file '$INPUT_FILE' does not exist"
+        return 1
+    fi
+
+    # Example conditional
+    if [ "$VERBOSE" = true ]; then
+        log_message "Verbose mode enabled"
+    fi
+
+    # Example loop
+    for item in item1 item2 item3; do
+        log_message "Processing $item"
+        # Process each item
+    done
+
+    # Example of capturing command output
+    local RESULT=$(some_command)
+    log_message "Command result: $RESULT"
+
+    # Exit with success
+    log_message "Script completed successfully"
+    return 0
+}
+
+# Check if the script is being executed directly (not sourced/imported)
+# ${BASH_SOURCE[0]} is the name of the script being executed
+# $0 is the name of the shell or shell script being executed
+# If they're the same, then the script is being run directly
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    main "$@"
+    exit $?
+fi
+
+# If sourced (not run directly), the following will be executed:
+# export any functions or variables you want to make available when sourced
+export -f log_message
+export -f cleanup
+# You can add more exportable functions here

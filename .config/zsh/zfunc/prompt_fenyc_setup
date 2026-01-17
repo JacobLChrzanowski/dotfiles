@@ -1,0 +1,8 @@
+# Fenyc Prompt Setup
+
+prompt_fenyc_setup() {
+    PROMPT='%B%F{37}%n%b%F{154}@%F{214}%m%f:%~$ '
+    prompt_opts=(cr subst percent)
+}
+
+prompt_fenyc_setup "$@"
