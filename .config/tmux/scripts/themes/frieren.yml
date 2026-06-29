@@ -1,6 +1,6 @@
 ---
-name: UltraViolet
-description: Purple & peach gradient theme
+name: Frieren
+description: Frieren theme
 colors:
   status_bg: "#c7c5a6"
   session_fg: "#ffffff"
@@ -8,9 +8,9 @@ colors:
   gradient:
   - "#111111"
   - "#7c464b"
-  # - "#792322"
-  # - "#310f0f"
-  # - "#111111"
+  - "#792322"
+  - "#310f0f"
+  - "#111111"
   - "#34565e"
   - "#85a790"
   - "#c7c5a6"

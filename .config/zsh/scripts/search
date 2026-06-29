@@ -1,15 +1,79 @@
 #!/bin/bash
 # Search through zsh configuration
 
+# Strings
+USAGE="search [-l|--location <location>] <search_term>
+
+Search Term:
+- When <search_term> has no capital chars, rg searches without case sensitivity.
+- Limit of one search term.
+Location:
+- Exclude to search hardcoded search_root (\$HOME/Documents/dotfiles).
+- Include to search within .config/<location> sub-directory.
+- When passed '.', searches the hardcoded search_root.
+"
+
 function main() {
     # Exit on error
     set -e
+    # Search
+    ## Root search dir
+    local search_root="$HOME/Documents/dotfiles"
+    ## Search subdir
+    local location="zsh"
+    # rg args
+    # If repurposing to search .config, you may need to add '--follow' to traverse symlinks.
+    local rg_args=()
+    rg_args+=("--color=auto")
+    rg_args+=("--hidden")
+
     if [[ $# -eq 0 ]]; then
         echo "No search terms were provided."
         exit 1
     fi
 
-    grep --color=auto "$@" -r $ZSH_C
+    local rg_search_terms=()
+    while [[ $# -gt 0 ]]; do
+        case $1 in
+            -l|--location)
+                location="$2"
+                shift
+                shift
+                ;;
+            -h|--help)
+                printf "%s" "${USAGE}"
+                exit 1
+                ;;
+            -*|--*)
+                echo "Unknown option $1"
+                exit 1
+                ;;
+            *)
+                rg_search_terms+=("$1")
+                shift
+                ;;
+        esac
+    done
+
+    # Allow searching through all dotfiles.
+    if [[ "${location}" == "." ]]; then
+        local rg_search="${search_root}"
+    else
+        local rg_search="${search_root}/.config/${location}"
+    fi
+
+    # You can only supply a single search string
+    if [[ ${#rg_search_terms[@]} -gt 1 ]]; then
+        printf "Limit of one search string.\n"
+        exit 1
+    fi
+
+    # If search string contains uppercase char, search with case sensitivity.
+    if [[ ! ${rg_search_terms[0]} =~ [A-Z] ]]; then
+        rg_args+=("-i")
+    fi
+
+    rg "${rg_args[@]}" "${rg_search_terms[0]}" "${rg_search}"
 }
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
